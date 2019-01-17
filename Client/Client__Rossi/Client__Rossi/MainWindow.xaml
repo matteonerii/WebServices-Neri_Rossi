@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client__Rossi"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="WebServiceBooks v0.1" Height="600" Width="1000">
+    <Window.Background>
+        <ImageBrush ImageSource="WallpaperBookshelf.jpg"/>
+    </Window.Background>
     <Grid>
-        
+        <ListBox x:Name="lstPrint" HorizontalAlignment="Left" Height="717" Margin="585,10,0,0" VerticalAlignment="Top" Width="398"/>
+        <Button x:Name="btn_ClearListBox" Content="Pulisci Lista" HorizontalAlignment="Left" Margin="480,688,0,0" VerticalAlignment="Top" Width="100" Height="39" Click="btn_ClearListBox_Click"/>
+
     </Grid>
 </Window>
