@@ -1,0 +1,15 @@
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\bin\Debug\Client__Rossi.exe.config
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\bin\Debug\Client__Rossi.exe
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\bin\Debug\Client__Rossi.pdb
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\Client__Rossi.csprojAssemblyReference.cache
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\MainWindow.g.cs
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\App.g.cs
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\Client__Rossi_MarkupCompile.cache
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\Client__Rossi_MarkupCompile.lref
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\MainWindow.baml
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\Client__Rossi.g.resources
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\Client__Rossi.Properties.Resources.resources
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\Client__Rossi.csproj.GenerateResource.cache
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\Client__Rossi.csproj.CoreCompileInputs.cache
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\Client__Rossi.exe
+C:\Users\francesco.rossi\Desktop\WebServices-Neri_Rossi\Client\Client__Rossi\Client__Rossi\obj\Debug\Client__Rossi.pdb

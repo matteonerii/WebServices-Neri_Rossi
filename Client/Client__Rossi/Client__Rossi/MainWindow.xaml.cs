@@ -46,7 +46,7 @@ namespace Client__Rossi
          */
         private void btn_ShowPOST_Click(object sender, RoutedEventArgs e)
         {
-            string url = "http://webservices.dotnethell.it/codicefiscale.asmx/CalcolaCodiceFiscale";
+            //string url = "http://webservices.dotnethell.it/codicefiscale.asmx/CalcolaCodiceFiscale";
             //PostRequest(url, txt_Name.Text, txt_Surname.Text, txt_CityBirth.Text, txt_Birth.Text, txt_Gender.Text);
         }
         /*
@@ -106,10 +106,26 @@ namespace Client__Rossi
                 }
             }
         }
-
+        /*
+         * Bottone realtivo alla pulizia della listbox di stampa
+         */
         private void btn_ClearListBox_Click(object sender, RoutedEventArgs e)
         {
+            lstPrint.Items.Clear();
+        }
+        /*
+         * Bottone relativo alla stampa dell'elenco dei libri presenti
+         * nel reparto "Ultimi arrivi" e della categoria "Fumetti"
+         */
+        private void btn_LastArrival_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void btn_Catalog_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "http://10.13.100.39/cartella/SERVER/index.php?name=" + "People of the Wind";
+            GetRequest(url);
         }
     }
 }
