@@ -28,6 +28,16 @@
 	 "dati":"Numero pagine: 208, rilegatura in carta,non tascabile",
 	 "anno pubblicazione":"2017",
 	 "editore":"Feltrinelli";
-	 "collana":"Fantasy"	 
+	 "collana":"Romanzo"	 
+	},
+	{"titolo":"Il GGG",
+	 "autore":"Enrico Rossi"
+	 "prezzo":"€70,99",
+	 "data archiviazione":"30/12/2000",
+	 "categoria":"Da non perdere",
+	 "dati":"Numero pagine: 208, rilegatura in carta,non tascabile",
+	 "anno pubblicazione":"2007",
+	 "editore":"Feltrinelli";
+	 "collana":"Romanzo"	 
 	}
 ]}
