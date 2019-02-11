@@ -1,0 +1,20 @@
+{"reparti":
+[
+	{
+	 "id":"00",
+	 "tipo":"fumetti"
+	},
+	{
+	 "id":"01",
+	 "tipo":"fantasy"
+	},
+	{
+	 "id":"02",
+	 "tipo":"filosofia"
+	},
+	{
+	 "id":"03",
+	 "tipo":"storia"
+	},
+	
+]}
