@@ -8,7 +8,7 @@
 			$arr=array();
 			$i=0;
 			foreach ($books['book'] as book){
-				$arr[$i] =$book['nome'];
+				$arr[$i] =$book['titolo'];
 				$i=$i+1;
 			}
 			break;
