@@ -7,7 +7,7 @@
 			$dati=datiConversione('libri.json');
 			$arr=array();
 			$i=0;
-			foreach ($books['book'] as book){
+			foreach ($dati['libro'] as book){
 				$arr[$i] =$book['nome'];
 				$i=$i+1;
 			}
