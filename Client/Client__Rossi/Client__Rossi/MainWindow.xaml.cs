@@ -121,11 +121,38 @@ namespace Client__Rossi
         {
 
         }
-
+        /*
+         * Bottone relativo alla stampa di tutti i libri nel catalogo 
+         */
         private void btn_Catalog_Click(object sender, RoutedEventArgs e)
         {
-            string url = "http://10.13.100.39/cartella/SERVER/index.php?name=" + "People of the Wind";
+            string url = "http://10.13.100.39/cartella/WebServices-Neri_Rossi/SERVER/?funzione="+"0";
             GetRequest(url);
+        }
+        /*
+         * Bottone relativo alla stampa di tutti i libri scontati presenti in tutti 
+         * i reparti in ordine crescente per sconto
+         */
+        private void btn_PrintDepartments_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        /*
+         * Bottone relativo alla stampa dell'elenco dei libri archiviati all'interno
+         * di un periodo definito da due date 
+         */
+        private void btn_PrintArchived_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        /*
+         * Bottone relativo alla stampa dell' elenco dei titoli dei libri acquistati 
+         * con il rispettivo numero copie e username dell'utente associato a quel carrello
+         */
+        private void btn_PrintPurchasedBooks_Click(object sender, RoutedEventArgs e)
+        {
+            string beginData = txt_FirstDate.Text;
+            string endDate = txt_SecondDAte.Text;
         }
     }
 }
