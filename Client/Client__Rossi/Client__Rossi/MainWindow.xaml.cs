@@ -14,14 +14,18 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Http;
 using System.IO;
+using System.Web.Script.Serialization;
 
 namespace Client__Rossi
 {
     public partial class MainWindow : Window
     {
+        static string mycontent;
         public MainWindow()
         {
             InitializeComponent();
+            JavaScriptSerializer jvObj = new JavaScriptSerializer();
+            jvObj.Deserialize<string>(mycontent);
         }
         /*
          * APPUNTI
@@ -71,37 +75,8 @@ namespace Client__Rossi
                 {
                     using (HttpContent content = response.Content)
                     {
-                        string mycontent = await content.ReadAsStringAsync();
-                        MessageBox.Show(mycontent);
-                    }
-                }
-            }
-        }
-
-        /*
-         * Metodo che effettua la 'POST' asincrono e statico
-         */
-        async static void PostRequest(string url, string name, string surname, string citybirth, string birth, string gender)
-        {
-            IEnumerable<KeyValuePair<string, string>> queries = new List<KeyValuePair<string, string>>()
-            {
-                new KeyValuePair<string, string> ("Nome", name),
-                new KeyValuePair<string, string> ("Cognome", surname),
-                new KeyValuePair<string, string> ("ComuneNascita", citybirth),
-                new KeyValuePair<string, string> ("DataNascita", birth),
-                new KeyValuePair<string, string> ("Sesso", gender),
-            };
-
-            HttpContent http_content = new FormUrlEncodedContent(queries);
-
-            using (HttpClient client = new HttpClient())
-            {
-                using (HttpResponseMessage response = await client.PostAsync(url, http_content))
-                {
-                    using (HttpContent content = response.Content)
-                    {
-                        string mycontent = await content.ReadAsStringAsync();
-                        MessageBox.Show(mycontent);
+                        mycontent = await content.ReadAsStringAsync();
+                        //MessageBox.Show(mycontent);
                     }
                 }
             }
@@ -128,6 +103,7 @@ namespace Client__Rossi
         {
             string url = "http://10.13.100.39/cartella/WebServices-Neri_Rossi/SERVER/?funzione="+"0";
             GetRequest(url);
+            lstPrint.Items.Add(url);
         }
         /*
          * Bottone relativo alla stampa di tutti i libri scontati presenti in tutti 
