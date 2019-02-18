@@ -1,0 +1,28 @@
+{"utenti":
+[
+	{
+	 "telefono":"3299832356",
+	 "nome":"Matteo",
+	 "cognome":"Neri",
+	 "email":"Neri@gmail.com",
+	 "password":"Neri",
+	 "indirizzo":"via matteotti",
+	 "cap":"47522",
+	 "citta":"Cesena",
+	 "nazione":"Italia",
+	 "fax":"1234"	 
+	},
+	{
+	 "telefono":"3274733737",
+	 "nome":"Enrico",
+	 "cognome":"Gobbi",
+	 "email":"Neri@gmail.com",
+	 "password":"Neri",
+	 "indirizzo":"via montaletto",
+	 "cap":"47522",
+	 "citta":"Cesena",
+	 "nazione":"Italia",
+	 "fax":"2345"	 
+	}
+	
+]}
