@@ -16,58 +16,31 @@ using System.Net.Http;
 using System.IO;
 using System.Web.Script.Serialization;
 
+/*
+ * APPUNTI
+ * 
+ * Lo 'using' è un sistema di gestione delle eccezioni analogo alla struttura Try-Catch-Finally ma più performante
+ * 
+ * la parola chiave 'await' permette una gestione asincrona
+ * 
+ */
+
 namespace Client__Rossi
 {
     public partial class MainWindow : Window
     {
+        string url = "http://10.13.100.39/cartella/WebServices-Neri_Rossi/SERVER/?funzione=";
+        static public string titoli;
+        static public string[] formattedTitles = new string[4];
         static string mycontent;
         public MainWindow()
         {
             InitializeComponent();
-            JavaScriptSerializer jvObj = new JavaScriptSerializer();
-            jvObj.Deserialize<string>(mycontent);
-        }
-        /*
-         * APPUNTI
-         * 
-         * Lo 'using' è un sistema di gestione delle eccezioni analogo alla struttura Try-Catch-Finally ma più performante
-         * 
-         * la parola chiave 'await' permette una gestione asincrona
-         * 
-         */
-
-
-        private void btn_Invoke_Click(object sender, RoutedEventArgs e)
-        {
-            //CodiceFiscale.CodiceFiscaleSoapClient soapClient = new CodiceFiscale.CodiceFiscaleSoapClient();
-
-            //string response = soapClient.CalcolaCodiceFiscale(txt_Name.Text, txt_Surname.Text, txt_CityBirth.Text, txt_Birth.Text, txt_Gender.Text);
-
-           // MessageBox.Show(response);
-        }
-        /*
-         * BOTTONE POST
-         */
-        private void btn_ShowPOST_Click(object sender, RoutedEventArgs e)
-        {
-            //string url = "http://webservices.dotnethell.it/codicefiscale.asmx/CalcolaCodiceFiscale";
-            //PostRequest(url, txt_Name.Text, txt_Surname.Text, txt_CityBirth.Text, txt_Birth.Text, txt_Gender.Text);
-        }
-        /*
-         * BOTTONE GET
-         */
-        private void btn_ShowGet_Click(object sender, RoutedEventArgs e)
-        {
-            //string url = "http://webservices.dotnethell.it/codicefiscale.asmx/CalcolaCodiceFiscale?Nome="
-                //+ txt_Name.Text + "&Cognome=" + txt_Surname.Text + "&ComuneNascita=" + txt_CityBirth.Text + "&DataNascita=" + txt_Birth.Text + "&Sesso=" + txt_Gender.Text;
-
-
-            //GetRequest(url);
         }
         /*
          * Metodo che effettua la 'GET' asincrono e statico
          */
-        async static void GetRequest(string url)
+        async static Task GetRequest(string url)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -76,34 +49,57 @@ namespace Client__Rossi
                     using (HttpContent content = response.Content)
                     {
                         mycontent = await content.ReadAsStringAsync();
-                        //MessageBox.Show(mycontent);
+                        /*
+                         * formattazione della stringa proveniente dal server
+                         */
+                        bool find = true;
+                        int start = 0;
+                        int end = 0;
+                        int i = 0;
+
+                        while (find == true)
+                        {
+                            if (mycontent.Substring(start).Contains("data"))
+                            {
+                                start = mycontent.IndexOf("data", start);
+                                end = mycontent.IndexOf("]", start);
+                                titoli = mycontent.Substring(start + 7, end - start - 7);
+                                formattedTitles = titoli.Split(',');
+                                start++;
+                                i++;
+                            }
+                            else
+                            {
+                                find = false;
+                            }
+                        }
+                        /*
+                         * striga proveniente dal server (completa) usata per le prove
+                         * di formattazione della stringa
+                         */
+                       //MessageBox.Show(mycontent);
                     }
                 }
             }
         }
         /*
-         * Bottone realtivo alla pulizia della listbox di stampa
-         */
-        private void btn_ClearListBox_Click(object sender, RoutedEventArgs e)
-        {
-            lstPrint.Items.Clear();
-        }
-        /*
-         * Bottone relativo alla stampa dell'elenco dei libri presenti
-         * nel reparto "Ultimi arrivi" e della categoria "Fumetti"
-         */
-        private void btn_LastArrival_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        /*
          * Bottone relativo alla stampa di tutti i libri nel catalogo 
          */
-        private void btn_Catalog_Click(object sender, RoutedEventArgs e)
+        private async void btn_Catalog_Click(object sender, RoutedEventArgs e)
         {
-            string url = "http://10.13.100.39/cartella/WebServices-Neri_Rossi/SERVER/?funzione="+"0";
-            GetRequest(url);
-            lstPrint.Items.Add(url);
+            Task task = GetRequest(url + "0");
+            await task;
+            string tmp;
+
+            /*
+             * con str.Trim formattiamo ulteriormente la stringa di output 
+             * togliendo anche le doppie virgole separatrici dei nomi
+             */
+            foreach (string str in formattedTitles)
+            {
+                tmp = str.Trim('"');
+                lstPrint.Items.Add(tmp);
+            }
         }
         /*
          * Bottone relativo alla stampa di tutti i libri scontati presenti in tutti 
@@ -119,7 +115,7 @@ namespace Client__Rossi
          */
         private void btn_PrintArchived_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
         /*
          * Bottone relativo alla stampa dell' elenco dei titoli dei libri acquistati 
@@ -127,8 +123,24 @@ namespace Client__Rossi
          */
         private void btn_PrintPurchasedBooks_Click(object sender, RoutedEventArgs e)
         {
-            string beginData = txt_FirstDate.Text;
-            string endDate = txt_SecondDAte.Text;
+            
+        }
+        /*
+         * Bottone realtivo alla pulizia della listbox di stampa
+         */
+        private void btn_ClearListBox_Click(object sender, RoutedEventArgs e)
+        {
+            lstPrint.Items.Clear();
+        }
+        /*
+         * Bottone relativo alla stampa dell'elenco dei libri presenti
+         * nel reparto "Ultimi arrivi" e della categoria "Fumetti"
+         */
+        private async void btn_LastArrival_Click(object sender, RoutedEventArgs e)
+        {
+            Task task = GetRequest(url + "1");
+            await task;
+
         }
     }
 }
