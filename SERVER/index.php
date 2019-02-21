@@ -18,24 +18,28 @@
 				$i=$i+1;
 			}
 		break;
-		case '1'		
-			$dati = datiConversione('../FileJSON/Libri.json');
-			$reparti = datiConversione('../FileJSON/Reparti.json');
+		case '1':		
+			$dati = datiConversione('libri.json');
+			$reparti = datiConversione('reparti.json');
 			$arr = array();
 			$i = 0;
-		
-			foreach($dati['reparto'] as $reparto)
+			$idFumetti="";
+			//var_dump($dati);
+			//var_dump($reparti);
+			foreach($reparti['reparti'] as $rep)
 			{
-				if(strtoupper($reparto['tipo']) == strtoupper('Fumetti'))
-					$idFumetti=reparto['id'];
+				if(strtoupper($rep['tipo']) == strtoupper('Fumetti'))
+				{
+					$idFumetti=$rep['id'];
+				}
 			}
 
 		
-			foreach($dati['libro'] as $book)
+			foreach($dati['libri'] as $libro)
 			{
-				if($book['reparto'] == $idFumetti && strtoupper($book['categoria']) == strtoupper('I più venduti'))
+				if($libro['reparto'] == $idFumetti && strtoupper($libro['categoria']) == strtoupper('I più venduti'))
 				{
-					$arr[$i] = $book['titolo'];
+					$arr[$i] = $libro['titolo'];
 					$i = $i + 1;
 				}
 			}

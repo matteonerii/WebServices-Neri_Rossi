@@ -3,15 +3,13 @@
 	{
 	 "libro":"00",
 	 "carrello":"00",
-	 "nCopie":"12",
-	 "carrello":"00",
-     "disponibilità":"si",	 
-	}
+	 "nCopie":"12",	 
+     "disponibilità":"si"	 
+	},
 	{
 	 "libro":"01",
 	 "carrello":"01",
-	 "nCopie":"2",
-	 "carrello":"10",
-     "disponibilità":"si",	 
+	 "nCopie":"2",	 
+     "disponibilità":"si"	 
 	}
 ]}
