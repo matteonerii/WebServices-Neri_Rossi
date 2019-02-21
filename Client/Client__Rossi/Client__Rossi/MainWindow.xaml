@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client__Rossi"
         mc:Ignorable="d"
-        Title="WebServiceBooks v0.1" Height="600" Width="1000">
+        Title="WebServiceBooks v0.1" Height="520" Width="1000">
     <Window.Background>
         <ImageBrush ImageSource="WallpaperBookshelf.jpg"/>
     </Window.Background>
     <Grid>
-        <ListBox x:Name="lstPrint" HorizontalAlignment="Left" Height="549" Margin="584,10,0,0" VerticalAlignment="Top" Width="398"/>
-        <Button x:Name="btn_ClearListBox" Content="Pulisci Lista" HorizontalAlignment="Left" Margin="453,504,0,0" VerticalAlignment="Top" Width="117" Height="55" Click="btn_ClearListBox_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="162,443,0,0" VerticalAlignment="Top" Width="117" Height="58"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="264,166,0,0" VerticalAlignment="Top" Width="117" Height="57"/>
-        <Button x:Name="btn_LastArrival" Content="Stampa Quantità" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" Width="120" Height="56" Click="btn_LastArrival_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="227,362,0,0" VerticalAlignment="Top" Width="117" Height="56"/>
-        <ComboBox x:Name="cmb_Categories" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Width="139" Height="28" SelectedIndex="0">
+        <ListBox x:Name="lstPrint" HorizontalAlignment="Left" Height="469" Margin="584,10,0,0" VerticalAlignment="Top" Width="398"/>
+        <Button x:Name="btn_ClearListBox" Content="Pulisci Lista" HorizontalAlignment="Left" Margin="451,344,0,0" VerticalAlignment="Top" Width="117" Height="55" Click="btn_ClearListBox_Click"/>
+        <Button x:Name="btn_PrintPurchasedBooks" Content="Stampa elenco" HorizontalAlignment="Left" Margin="233,343,0,0" VerticalAlignment="Top" Width="117" Height="56" Click="btn_PrintPurchasedBooks_Click"/>
+        <Button x:Name="btn_PrintDepartments" Content="Stampa elenco" HorizontalAlignment="Left" Margin="264,166,0,0" VerticalAlignment="Top" Width="117" Height="57" Click="btn_PrintDepartments_Click"/>
+        <Button x:Name="btn_PrintLastArrival" Content="Stampa Quantità" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" Width="120" Height="56" Click="btn_LastArrival_Click"/>
+        <Button x:Name="btn_PrintArchived" Content="Stampa elenco" HorizontalAlignment="Left" Margin="8,343,0,0" VerticalAlignment="Top" Width="117" Height="56" Click="btn_PrintArchived_Click"/>
+        <ComboBox x:Name="cmb_Categories" HorizontalAlignment="Left" Margin="153,55,0,0" VerticalAlignment="Top" Width="139" Height="28" SelectedIndex="0">
             <ComboBoxItem Content="Architettura"/>
             <ComboBoxItem Content="Arte"/>
             <ComboBoxItem Content="classici"/>
@@ -27,18 +27,23 @@
             <ComboBoxItem Content="filosofia"/>
             <ComboBoxItem Content="fumetti"/>
         </ComboBox>
-        <TextBox HorizontalAlignment="Left" Height="32" Margin="10,20,0,0" TextWrapping="Wrap" Text="CATEGORIE" VerticalAlignment="Top" Width="139" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" Height="32" Margin="186,20,0,0" TextWrapping="Wrap" Text="REPARTI" VerticalAlignment="Top" Width="136" FontSize="21"/>
-        <ComboBox HorizontalAlignment="Left" Margin="186,57,0,0" VerticalAlignment="Top" Width="136" Height="28" SelectedIndex="0">
+        <TextBox HorizontalAlignment="Left" Height="32" Margin="153,18,0,0" TextWrapping="Wrap" Text="CATEGORIE" VerticalAlignment="Top" Width="139" FontSize="20"/>
+        <TextBox HorizontalAlignment="Left" Height="32" Margin="329,18,0,0" TextWrapping="Wrap" Text="REPARTI" VerticalAlignment="Top" Width="136" FontSize="21"/>
+        <ComboBox HorizontalAlignment="Left" Margin="329,55,0,0" VerticalAlignment="Top" Width="136" Height="28" SelectedIndex="0">
             <ComboBoxItem Content="Da non perdere"/>
             <ComboBoxItem Content="I più venduti"/>
             <ComboBoxItem Content="Ultimi arrivi"/>
             <ComboBoxItem Content="Offerte speciali"/>
             <ComboBoxItem Content="Remainders"/>
         </ComboBox>
-        <TextBox HorizontalAlignment="Left" Height="51" Margin="10,110,0,0" TextWrapping="Wrap" Text="Stampa quantità dei libri "Ultimi Arrivi" nel reparto "fumetti"" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="51" Margin="10,110,0,0" TextWrapping="Wrap" Text="Stampa quantità dei libri ultimi arrivi nel reparto fumetti" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="51" Margin="264,110,0,0" TextWrapping="Wrap" Text="elenco dei libri scontati presenti in tutti i reparti in ordine crescente per sconto" VerticalAlignment="Top" Width="160"/>
-        <Button x:Name="btn_Catalog" Content="Visualizza Catalogo" HorizontalAlignment="Left" Margin="379,20,0,0" VerticalAlignment="Top" Width="131" Height="32" Click="btn_Catalog_Click"/>
+        <Button x:Name="btn_Catalog" Content="Visualizza Catalogo" HorizontalAlignment="Left" Margin="0,18,0,0" VerticalAlignment="Top" Width="131" Height="32" Click="btn_Catalog_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="41" Margin="8,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Text="elenco libri archiviati all'interno di un periodo definito da due date "/>
+        <TextBox HorizontalAlignment="Left" Height="41" Margin="233,260,0,0" TextWrapping="Wrap" Text=" elenco dei titoli dei libri acquistati con il rispettivo numero copie e username dell'utente associato a quel carrello" VerticalAlignment="Top" Width="325"/>
+        <TextBox x:Name="txt_ShoppingCartCode" HorizontalAlignment="Left" Height="23" Margin="233,306,0,0" TextWrapping="Wrap" Text="Codice del carrello" VerticalAlignment="Top" Width="171"/>
+        <TextBox x:Name="txt_FirstDate" HorizontalAlignment="Left" Height="23" Margin="8,306,0,0" TextWrapping="Wrap" Text="GG/MM/AAAA" VerticalAlignment="Top" Width="110"/>
+        <TextBox x:Name="txt_SecondDAte" HorizontalAlignment="Left" Height="23" Margin="123,306,0,0" TextWrapping="Wrap" Text="GG/MM/AAAA" VerticalAlignment="Top" Width="105"/>
 
     </Grid>
 </Window>
