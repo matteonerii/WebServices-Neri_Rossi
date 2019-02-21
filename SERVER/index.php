@@ -1,37 +1,57 @@
 <?php
 // process client request (via URL)
 	header ("Content-Type_application/json");
-	switch($_GET['funzione'])
+	$funzione=$_GET['funzione'];
+	switch($funzione)
 	{
-		case 'all':
+		case '0':
 			$dati=datiConversione('libri.json');
 			$arr=array();
+			
 			$i=0;
-			foreach ($dati['libro'] as book){
-				$arr[$i] =$book['nome'];
+			//var_dump($dati);
+			
+			foreach ($dati['libro'] as $book)
+			{
+				
+				$arr[$i] =$book['titolo'];
 				$i=$i+1;
 			}
-			break;
-	}
-	
-	if(!empty($_GET['name'])){
-	
-			$name=$_GET['name'];
-			$price=get_price($name);
-	
-			if(empty($price))
-		//book not found
-			deliver_response(200,"book not found", NULL);
-			else
-			//respond book price
-			deliver_response(200,"book found", $price);
+		break;
+		case '1'		
+			$dati = datiConversione('../FileJSON/Libri.json');
+			$reparti = datiConversione('../FileJSON/Reparti.json');
+			$arr = array();
+			$i = 0;
+		
+			foreach($dati['reparto'] as $reparto)
+			{
+				if(strtoupper($reparto['tipo']) == strtoupper('Fumetti'))
+					$idFumetti=reparto['id'];
+			}
+
+		
+			foreach($dati['libro'] as $book)
+			{
+				if($book['reparto'] == $idFumetti && strtoupper($book['categoria']) == strtoupper('I più venduti'))
+				{
+					$arr[$i] = $book['titolo'];
+					$i = $i + 1;
 				}
-	else
-	{
-		//throw invalid request
-		deliver_response(400,"Invalid request", NULL);
+			}
+		
+			deliver_response(200,"fumetti", $arr);		
+			
+		break;
+		case '2':
+			
+		break;
+		case '3':
+			
+		break;
 	}
 	
+
 	function deliver_response($status, $status_message, $data)
 	{
 		header("HTTP/1.1 $status $status_message");
@@ -46,7 +66,7 @@
 	function datiConversione($json)
 	{
 		$str = file_get_contents($json);
-		$books = json_decode($str, true); 
+		$dati = json_decode($str, true); 
 
 		return $dati;
 	}
