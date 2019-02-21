@@ -90,6 +90,10 @@
 						
 		break;
 		case '3':
+			$tmp=mktime(0,0,0,$_GET['giorno'],$_GET['mese'],$_GET['anno']);
+			$data=date($tmp);
+		break;
+		case '4':
 			
 		break;
 	}
