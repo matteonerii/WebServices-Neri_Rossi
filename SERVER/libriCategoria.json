@@ -1,11 +1,19 @@
 {"libriCategoria":
 [
 	{
-	 "libro":"00",
+	 "libro":0,
+	 "categoria":"I più venduti"
+	},
+	{
+	 "libro":1,
 	 "categoria":"Ultimi arrivi"
 	},
 	{
-	 "libro":"01",
-	 "categoria":"I più venduti"
-	}
+		"libro":2,
+		"categoria":"Offerte speciali"
+	   },
+	   {
+		"libro":3,
+		"categoria":"Da non perdere"
+	   }
 ]}

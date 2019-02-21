@@ -9,14 +9,15 @@
 			$arr=array();
 			
 			$i=0;
-			//var_dump($dati);
 			
-			foreach ($dati['libro'] as $book)
+			
+			foreach ($dati['libri'] as $libro)
 			{
 				
-				$arr[$i] =$book['titolo'];
+				$arr[$i] =$libro['titolo'];
 				$i=$i+1;
 			}
+			deliver_response(200,"catalogo", $arr);
 		break;
 		case '1':		
 			$dati = datiConversione('libri.json');
@@ -44,11 +45,49 @@
 				}
 			}
 		
-			deliver_response(200,"fumetti", $arr);		
+			deliver_response(200,"fumetti ", $arr);		
 			
 		break;
 		case '2':
+			$dati = datiConversione('libri.json');
+			$categorie = datiConversione('categorie.json');
+			$libriCategoria = datiConversione('libriCategoria.json');
+
+			$tit=array();
+			$arr=array();
 			
+
+			$i=0;
+			
+
+			foreach($categorie['categorie'] as $cat)
+			{
+				if($cat['sconto'] != 0 )
+				{
+					foreach($libriCategoria['libriCategoria'] as $libCat)
+					{
+						if($libCat['categoria'] == $cat['tipo'] )
+						{
+							foreach($dati['libri'] as $libro)
+							{
+								if($libro['id']==$libCat['libro'])
+								{
+									array_push($arr,array('sconto'=>$cat['sconto'],"titolo"=>$libro["titolo"]));
+								}
+							}
+
+						}
+					}
+				}
+			}
+			asort($arr);		
+			
+			foreach($arr as $libro)
+			{
+				array_push($tit,$libro['titolo']);
+			}
+			deliver_response(200,"sconti  ", $tit);		
+						
 		break;
 		case '3':
 			
