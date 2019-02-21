@@ -2,7 +2,7 @@
 [
 	{
 	
-	 "id":"00",
+	 "id":0,
 	 "titolo":"Night in Old Mexico",
 	 "prezzo":"46,99",
 	 "nPagine":"48",
@@ -13,13 +13,14 @@
 	 "immagine":"img.img",	 
 	 "reparto":"00",
 	 "editore":"Mondadori",
-	 "autore":"Matteo Neri"	 
+	 "autore":"Matteo Neri",
+	  "categoria":"I più venduti"
 	 
 	},
 	
 	{
 	
-	 "id":"01",
+	 "id":1,
 	 "titolo":"Lo hobbit",
 	 "prezzo":"20,99",
 	 "nPagine":"100",
@@ -30,13 +31,14 @@
 	 "immagine":"img.img",	 
 	 "reparto":"01",
 	 "editore":"Mondadori",
-	 "autore":"Enrico Neri"	 
+	 "autore":"Enrico Neri",
+	 "categoria":"Ultimi arrivi"
 	 
 	},
 	
 	{
 	
-	 "id":"02",
+	 "id":2,
 	 "titolo":"Il GGG",
 	 "prezzo":"58,99",
 	 "nPagine":"50",
@@ -47,13 +49,14 @@
 	 "immagine":"img.img",	 
 	 "reparto":"02",
 	 "editore":"Mondadori",
-	 "autore":"Eleonora Neri"	 
+	 "autore":"Eleonora Neri",
+	 "categoria":"Offerte speciali"	 
 	 
 	},
 	
 	{
 	
-	 "id":"03",
+	 "id":3,
 	 "titolo":"Il visconte dimezzato",
 	 "prezzo":"13,99",
 	 "nPagine":"70",
@@ -64,7 +67,8 @@
 	 "immagine":"img.img",	 
 	 "reparto":"03",
 	 "editore":"Mondadori",
-	 "autore":"Alessandro Neri"	 
+	 "autore":"Alessandro Neri",
+	 "categoria":"Da non perdere" 
 	 
-	},
+	}
 ]}

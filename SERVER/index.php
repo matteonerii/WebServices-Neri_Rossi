@@ -1,37 +1,100 @@
 <?php
 // process client request (via URL)
 	header ("Content-Type_application/json");
-	switch($_GET['funzione'])
+	$funzione=$_GET['funzione'];
+	switch($funzione)
 	{
-		case 'all':
+		case '0':
 			$dati=datiConversione('libri.json');
 			$arr=array();
+			
 			$i=0;
-			foreach ($dati['libro'] as book){
-				$arr[$i] =$book['nome'];
+			
+			
+			foreach ($dati['libri'] as $libro)
+			{
+				
+				$arr[$i] =$libro['titolo'];
 				$i=$i+1;
 			}
-			break;
-	}
-	
-	if(!empty($_GET['name'])){
-	
-			$name=$_GET['name'];
-			$price=get_price($name);
-	
-			if(empty($price))
-		//book not found
-			deliver_response(200,"book not found", NULL);
-			else
-			//respond book price
-			deliver_response(200,"book found", $price);
+			deliver_response(200,"catalogo", $arr);
+		break;
+		case '1':		
+			$dati = datiConversione('libri.json');
+			$reparti = datiConversione('reparti.json');
+			$arr = array();
+			$i = 0;
+			$idFumetti="";
+			//var_dump($dati);
+			//var_dump($reparti);
+			foreach($reparti['reparti'] as $rep)
+			{
+				if(strtoupper($rep['tipo']) == strtoupper('Fumetti'))
+				{
+					$idFumetti=$rep['id'];
 				}
-	else
-	{
-		//throw invalid request
-		deliver_response(400,"Invalid request", NULL);
+			}
+
+		
+			foreach($dati['libri'] as $libro)
+			{
+				if($libro['reparto'] == $idFumetti && strtoupper($libro['categoria']) == strtoupper('I più venduti'))
+				{
+					$arr[$i] = $libro['titolo'];
+					$i = $i + 1;
+				}
+			}
+		
+			deliver_response(200,"fumetti ", $arr);		
+			
+		break;
+		case '2':
+			$dati = datiConversione('libri.json');
+			$categorie = datiConversione('categorie.json');
+			$libriCategoria = datiConversione('libriCategoria.json');
+
+			$tit=array();
+			$arr=array();
+			
+
+			$i=0;
+			
+
+			foreach($categorie['categorie'] as $cat)
+			{
+				if($cat['sconto'] != 0 )
+				{
+					foreach($libriCategoria['libriCategoria'] as $libCat)
+					{
+						if($libCat['categoria'] == $cat['tipo'] )
+						{
+							foreach($dati['libri'] as $libro)
+							{
+								if($libro['id']==$libCat['libro'])
+								{
+									array_push($arr,array('sconto'=>$cat['sconto'],"titolo"=>$libro["titolo"]));
+								}
+							}
+
+						}
+					}
+				}
+			}
+			asort($arr);		
+			
+			foreach($arr as $libro)
+			{
+				array_push($tit,$libro['titolo']);
+			}
+			deliver_response(200,"sconti  ", $tit);		
+						
+		break;
+		case '3':
+			
+		break;
 	}
 	
+
 	function deliver_response($status, $status_message, $data)
 	{
 		header("HTTP/1.1 $status $status_message");
@@ -46,7 +109,7 @@
 	function datiConversione($json)
 	{
 		$str = file_get_contents($json);
-		$books = json_decode($str, true); 
+		$dati = json_decode($str, true); 
 
 		return $dati;
 	}
