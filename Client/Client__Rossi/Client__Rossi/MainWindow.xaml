@@ -16,26 +16,6 @@
         <Button x:Name="btn_PrintDepartments" Content="Stampa elenco" HorizontalAlignment="Left" Margin="264,166,0,0" VerticalAlignment="Top" Width="117" Height="57" Click="btn_PrintDepartments_Click"/>
         <Button x:Name="btn_PrintLastArrival" Content="Stampa Quantità" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" Width="120" Height="56" Click="btn_LastArrival_Click"/>
         <Button x:Name="btn_PrintArchived" Content="Stampa elenco" HorizontalAlignment="Left" Margin="8,343,0,0" VerticalAlignment="Top" Width="117" Height="56" Click="btn_PrintArchived_Click"/>
-        <ComboBox x:Name="cmb_Categories" HorizontalAlignment="Left" Margin="153,55,0,0" VerticalAlignment="Top" Width="139" Height="28" SelectedIndex="0">
-            <ComboBoxItem Content="Architettura"/>
-            <ComboBoxItem Content="Arte"/>
-            <ComboBoxItem Content="classici"/>
-            <ComboBoxItem Content="cucina"/>
-            <ComboBoxItem Content="diritto"/>
-            <ComboBoxItem Content="economia"/>
-            <ComboBoxItem Content="fantascienza"/>
-            <ComboBoxItem Content="filosofia"/>
-            <ComboBoxItem Content="fumetti"/>
-        </ComboBox>
-        <TextBox HorizontalAlignment="Left" Height="32" Margin="153,18,0,0" TextWrapping="Wrap" Text="CATEGORIE" VerticalAlignment="Top" Width="139" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" Height="32" Margin="329,18,0,0" TextWrapping="Wrap" Text="REPARTI" VerticalAlignment="Top" Width="136" FontSize="21"/>
-        <ComboBox HorizontalAlignment="Left" Margin="329,55,0,0" VerticalAlignment="Top" Width="136" Height="28" SelectedIndex="0">
-            <ComboBoxItem Content="Da non perdere"/>
-            <ComboBoxItem Content="I più venduti"/>
-            <ComboBoxItem Content="Ultimi arrivi"/>
-            <ComboBoxItem Content="Offerte speciali"/>
-            <ComboBoxItem Content="Remainders"/>
-        </ComboBox>
         <TextBox HorizontalAlignment="Left" Height="51" Margin="10,110,0,0" TextWrapping="Wrap" Text="Stampa quantità dei libri ultimi arrivi nel reparto fumetti" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="51" Margin="264,110,0,0" TextWrapping="Wrap" Text="elenco dei libri scontati presenti in tutti i reparti in ordine crescente per sconto" VerticalAlignment="Top" Width="160"/>
         <Button x:Name="btn_Catalog" Content="Visualizza Catalogo" HorizontalAlignment="Left" Margin="0,18,0,0" VerticalAlignment="Top" Width="131" Height="32" Click="btn_Catalog_Click"/>
