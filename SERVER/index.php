@@ -19,14 +19,17 @@
 			}
 			deliver_response(200,"catalogo", $arr);
 		break;
-		case '1':		
+		case '1':
+			//Conversioni file JSON in array associativi
 			$dati = datiConversione('libri.json');
 			$reparti = datiConversione('reparti.json');
+
+			//inizializzazione variabili
 			$arr = array();
+
 			$i = 0;
 			$idFumetti="";
-			//var_dump($dati);
-			//var_dump($reparti);
+			
 			foreach($reparti['reparti'] as $rep)
 			{
 				if(strtoupper($rep['tipo']) == strtoupper('Fumetti'))
@@ -49,10 +52,12 @@
 			
 		break;
 		case '2':
+		    //Conversioni file JSON in array associativi
 			$dati = datiConversione('libri.json');
 			$categorie = datiConversione('categorie.json');
 			$libriCategoria = datiConversione('libriCategoria.json');
 
+			 //inizializzazione variabili
 			$tit=array();
 			$arr=array();
 			
@@ -89,9 +94,37 @@
 			deliver_response(200,"sconti  ", $tit);		
 						
 		break;
-		case '3':
-			$tmp=mktime(0,0,0,$_GET['giorno'],$_GET['mese'],$_GET['anno']);
-			$data=date($tmp);
+		case '3':			
+
+			//Conversione file JSON in array associativo
+            $dati = datiConversione('libri.json');
+
+            //inizializzazione variabili
+			$arr = array();
+			
+			//Per la ricerca dei libri tra due date utilizziamo il timestamp delle date inserite e della data di inserimento del libro            
+            //L'mktime calcola in secondi il tempo trascorso dal 1 gennaio 1970 
+
+            //Timestamp data inizio ricerca
+            $dataI = mktime(0,0,0,$_GET['mese1'],$_GET['giorno1'],$_GET['anno1']);
+
+            //Timestamp data inizio ricerca
+			$dataF = mktime(0,0,0,$_GET['mese2'],$_GET['giorno2'],$_GET['anno2']);
+			
+			
+           
+            foreach($dati['libri'] as $libro)
+            {
+                $tmp = explode("/", $libro['dataArch']);
+                $dataArch = mktime(0,0,0,$tmp[1], $tmp[0], $tmp[2]);
+
+				if($dataArch <= $dataF && $dataArch >= $dataI)
+				{
+					array_push($arr, $libro['titolo']);
+				}
+            }
+            
+            deliver_response(200,"date    ", $arr);    
 		break;
 		case '4':
 			
