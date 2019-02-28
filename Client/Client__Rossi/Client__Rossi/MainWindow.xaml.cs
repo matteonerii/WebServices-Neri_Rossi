@@ -89,33 +89,30 @@ namespace Client__Rossi
         {
             Task task = GetRequest(url + "0");
             await task;
-            string tmp;
-
-            /*
-             * con str.Trim formattiamo ulteriormente la stringa di output 
-             * togliendo anche le doppie virgole separatrici dei nomi
-             */
-            foreach (string str in formattedTitles)
-            {
-                tmp = str.Trim('"');
-                lstPrint.Items.Add(tmp);
-            }
+            string tmp = "";
+            Show(tmp);
         }
         /*
          * Bottone relativo alla stampa di tutti i libri scontati presenti in tutti 
          * i reparti in ordine crescente per sconto
          */
-        private void btn_PrintDepartments_Click(object sender, RoutedEventArgs e)
+        private async void btn_PrintDepartments_Click(object sender, RoutedEventArgs e)
         {
-
+            Task task = GetRequest(url + "2");
+            await task;
+            string tmp = "";
+            Show(tmp);
         }
         /*
          * Bottone relativo alla stampa dell'elenco dei libri archiviati all'interno
          * di un periodo definito da due date 
          */
-        private void btn_PrintArchived_Click(object sender, RoutedEventArgs e)
+        private async void btn_PrintArchived_Click(object sender, RoutedEventArgs e)
         {
-            
+            Task task = GetRequest(url + "3" + "&data1=" + txt_FirstDate.Text + "&data2=" + txt_SecondDAte.Text);
+            await task;
+            string tmp = "";
+            Show(tmp);
         }
         /*
          * Bottone relativo alla stampa dell' elenco dei titoli dei libri acquistati 
@@ -140,7 +137,22 @@ namespace Client__Rossi
         {
             Task task = GetRequest(url + "1");
             await task;
+            string tmp = "";
+            Show(tmp);
+        }
 
+        public void Show(string tmp)
+        {
+            lstPrint.Items.Add("Risultato ricerca: \n");
+            foreach (string str in formattedTitles)
+            {  
+                tmp = str.Trim('"');
+            /*
+             * con str.Trim formattiamo ulteriormente la stringa di output 
+             * togliendo anche le doppie virgole separatrici dei nomi
+             */
+                lstPrint.Items.Add(tmp);
+            }
         }
     }
 }
