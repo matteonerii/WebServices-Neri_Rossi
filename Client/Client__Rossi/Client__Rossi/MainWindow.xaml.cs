@@ -118,9 +118,12 @@ namespace Client__Rossi
          * Bottone relativo alla stampa dell' elenco dei titoli dei libri acquistati 
          * con il rispettivo numero copie e username dell'utente associato a quel carrello
          */
-        private void btn_PrintPurchasedBooks_Click(object sender, RoutedEventArgs e)
+        private async void btn_PrintPurchasedBooks_Click(object sender, RoutedEventArgs e)
         {
-            
+            Task task = GetRequest(url + "4" );
+            await task;
+            string tmp = "";
+            Show(tmp);
         }
         /*
          * Bottone realtivo alla pulizia della listbox di stampa
