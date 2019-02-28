@@ -136,37 +136,38 @@
             $user = datiConversione('utenti.json');
             $carrelli = datiConversione('carrelli.json');
             $libriCarr = datiConversione('libriCarrello.json');
-
+			
             $idCarrello = $_GET['carrello'];
             $utente="";
             $tit = array();
             $nCopie = "";
 
-            foreach($carrelli['carrello'] as $carr)
+            foreach($carrelli['carrelli'] as $carr)
             {
-				if($idCarrello ==  $carr["id"])
-				{
-					$utente = $carr["utente"];
-				}
+                if($idCarrello ==  $carr["id"])
+                    $utente = $carr["utenti"];
             }
 
-            foreach($libriCarr['librocarrello'] as $associazione)
+            foreach($libriCarr['libriCarrello'] as $associazione)
             {
                 if($associazione['carrello'] == $idCarrello);
                 {
-                    foreach($dati['libro'] as $libro)
+                    foreach($dati['libri'] as $libro)
                     {
-                        array_push($tit, $libro['titolo']);
+                        if($libro['id'] == $associazione['libro'])
+                            array_push($tit, array('titolo'=>$libro['titolo'], 'nCopie' => $associazione['nCopie']));
                     }
 
                     $nCopie = $associazione['nCopie'];
                 }
             }
 
+            
             $arr = array();
-           // array_push($arr, 'utente'=>$utente, $tit, 'nCopie'=>$nCopie);
+            array_push($arr, array('utente'=>$utente, 'libri' => $tit));
 
-            deliver_response(200,"", $arr);
+            deliver_response(200,"carrello", $arr);
+
 		break;
 		default:
 			deliver_response(400,"Invalid request", NULL);
