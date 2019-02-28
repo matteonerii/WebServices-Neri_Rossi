@@ -150,11 +150,11 @@
 
             foreach($libriCarr['libriCarrello'] as $associazione)
             {
-                if($associazione['carrelli'] == $idCarrello);
+                if($associazione['carrello'] == $idCarrello);
                 {
                     foreach($dati['libri'] as $libro)
                     {
-                        if($libro['id'] == $associazione['libri'])
+                        if($libro['id'] == $associazione['libro'])
                             array_push($tit, array('titolo'=>$libro['titolo'], 'nCopie' => $associazione['nCopie']));
                     }
 
