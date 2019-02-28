@@ -120,7 +120,7 @@ namespace Client__Rossi
          */
         private async void btn_PrintPurchasedBooks_Click(object sender, RoutedEventArgs e)
         {
-            Task task = GetRequest(url + "4");
+            Task task = GetRequest(url + "4" );
             await task;
             string tmp = "";
             Show(tmp);
