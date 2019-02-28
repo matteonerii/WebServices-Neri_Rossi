@@ -102,14 +102,18 @@
             //inizializzazione variabili
 			$arr = array();
 			
+			//spit per dividere le date inserite da input in giorno mese e anno
+			$tmpInizio = explode('/',$_GET['data1']);
+			$tmpFIne = explode('/',$_GET['data2']);
+			
 			//Per la ricerca dei libri tra due date utilizziamo il timestamp delle date inserite e della data di inserimento del libro            
             //L'mktime calcola in secondi il tempo trascorso dal 1 gennaio 1970 
 
-            //Timestamp data inizio ricerca
-            $dataI = mktime(0,0,0,$_GET['mese1'],$_GET['giorno1'],$_GET['anno1']);
+            //Timestamp data inizio ricerca (mese,giorno,anno)
+            $dataI = mktime(0,0,0,$tmpInizio[1],$tmpInizio[0],$tmpInizio[2]);
 
-            //Timestamp data inizio ricerca
-			$dataF = mktime(0,0,0,$_GET['mese2'],$_GET['giorno2'],$_GET['anno2']);
+            //Timestamp data inizio ricerca (mese,giorno,anno)
+			$dataF = mktime(0,0,0,$tmpFIne[1],$tmpFIne[0],$tmpFIne[2]);
 			
 			
            
@@ -127,11 +131,51 @@
             deliver_response(200,"date    ", $arr);    
 		break;
 		case '4':
-			
+		 	//Conversione file JSON in array associativo
+			$dati = datiConversione('libri.json');
+            $user = datiConversione('utenti.json');
+            $carrelli = datiConversione('carrelli.json');
+            $libriCarr = datiConversione('libriCarrello.json');
+
+            $idCarrello = $_GET['carrello'];
+            $utente="";
+            $tit = array();
+            $nCopie = "";
+
+            foreach($carrelli['carrello'] as $carr)
+            {
+				if($idCarrello ==  $carr["id"])
+				{
+					$utente = $carr["utente"];
+				}
+            }
+
+            foreach($libriCarr['librocarrello'] as $associazione)
+            {
+                if($associazione['carrello'] == $idCarrello);
+                {
+                    foreach($dati['libro'] as $libro)
+                    {
+                        array_push($tit, $libro['titolo']);
+                    }
+
+                    $nCopie = $associazione['nCopie'];
+                }
+            }
+
+            $arr = array();
+           // array_push($arr, 'utente'=>$utente, $tit, 'nCopie'=>$nCopie);
+
+            deliver_response(200,"", $arr);
 		break;
+		default:
+			deliver_response(400,"Invalid request", NULL);
+		break;
+
+        
 	}
 	
-
+	//funzione per l'invio di messaggi al client
 	function deliver_response($status, $status_message, $data)
 	{
 		header("HTTP/1.1 $status $status_message");
@@ -143,6 +187,8 @@
 		$json_response=json_encode($response);
 		echo $json_response;
 	}
+
+	//funzione per convertre file json ad array associativo
 	function datiConversione($json)
 	{
 		$str = file_get_contents($json);
@@ -150,17 +196,6 @@
 
 		return $dati;
 	}
-	function get_price($find)
-	{
-		$books=datiConversione('libri.json');
-		 foreach($books['book'] as $book)
-		 {
-			 if($book['name']==$find)
-			 {
-				 return $book['price'];
-				 break;
-			 }
-		 }
-    }
+	
 
 ?>
