@@ -105,7 +105,7 @@ namespace Client__Rossi
         }
         /*
          * Bottone relativo alla stampa dell'elenco dei libri archiviati all'interno
-         * di un periodo definito da due date 
+         * di un periodo definito da due date.
          */
         private async void btn_PrintArchived_Click(object sender, RoutedEventArgs e)
         {
