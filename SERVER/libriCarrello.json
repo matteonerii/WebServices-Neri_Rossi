@@ -1,14 +1,14 @@
 {"libriCarrello":
 [
 	{
-	 "libro":"00",
-	 "carrello":"00",
+	 "libro":0,
+	 "carrello":0,
 	 "nCopie":"12",	 
      "disponibilità":"si"	 
 	},
 	{
-	 "libro":"01",
-	 "carrello":"01",
+	 "libro":1,
+	 "carrello":1,
 	 "nCopie":"2",	 
      "disponibilità":"si"	 
 	}
