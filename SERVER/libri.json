@@ -11,10 +11,10 @@
 	 "collana":"aaa",
 	 "dataArch":"18/09/2007",
 	 "immagine":"img.img",	 
-	 "reparto":"00",
+	 "reparto":0,
 	 "editore":"Mondadori",
-	 "autore":"Matteo Neri",
-	  "categoria":"I più venduti"
+	 "autore":"Matteo Neri"
+	 
 	 
 	},
 	
@@ -29,10 +29,10 @@
 	 "collana":"aaa",
 	 "dataArch":"18/09/2012",
 	 "immagine":"img.img",	 
-	 "reparto":"01",
+	 "reparto":1,
 	 "editore":"Mondadori",
-	 "autore":"Enrico Neri",
-	 "categoria":"Ultimi arrivi"
+	 "autore":"Enrico Neri"
+	
 	 
 	},
 	
@@ -47,10 +47,10 @@
 	 "collana":"aaa",
 	 "dataArch":"18/09/2016",
 	 "immagine":"img.img",	 
-	 "reparto":"02",
+	 "reparto":2,
 	 "editore":"Mondadori",
-	 "autore":"Eleonora Neri",
-	 "categoria":"Offerte speciali"	 
+	 "autore":"Eleonora Neri"
+	 
 	 
 	},
 	
@@ -65,10 +65,10 @@
 	 "collana":"aaa",
 	 "dataArch":"18/09/1999",
 	 "immagine":"img.img",	 
-	 "reparto":"03",
+	 "reparto":3,
 	 "editore":"Mondadori",
-	 "autore":"Alessandro Neri",
-	 "categoria":"Da non perdere" 
+	 "autore":"Alessandro Neri"
+	 
 	 
 	}
 ]}

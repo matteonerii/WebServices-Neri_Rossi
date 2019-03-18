@@ -3,13 +3,13 @@
 	{
 	 "libro":0,
 	 "carrello":0,
-	 "nCopie":"12",	 
+	 "nCopie":12,	 
      "disponibilità":"si"	 
 	},
 	{
 	 "libro":1,
 	 "carrello":1,
-	 "nCopie":"2",	 
+	 "nCopie":2,	 
      "disponibilità":"si"	 
 	}
 ]}

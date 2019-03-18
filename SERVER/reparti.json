@@ -1,19 +1,19 @@
 {"reparti":
 [
 	{
-	 "id":"00",
+	 "id":0,
 	 "tipo":"fumetti"
 	},
 	{
-	 "id":"01",
+	 "id":1,
 	 "tipo":"fantasy"
 	},
 	{
-	 "id":"02",
+	 "id":2,
 	 "tipo":"filosofia"
 	},
 	{
-	 "id":"03",
+	 "id":3,
 	 "tipo":"storia"
 	}
 	

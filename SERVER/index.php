@@ -137,7 +137,7 @@
             $carrelli = datiConversione('carrelli.json');
             $libriCarr = datiConversione('libriCarrello.json');
 			
-            $idCarrello = $_GET['carrello'];
+            $idCarrello = $_GET['idCarrello'];
             $utente="";
             $tit = array();
             $nCopie = "";
@@ -145,21 +145,20 @@
             foreach($carrelli['carrelli'] as $carr)
             {
                 if($idCarrello ==  $carr["id"])
-                    $utente = $carr["utenti"];
+                    $utente = $carr["utente"];
             }
 
             foreach($libriCarr['libriCarrello'] as $associazione)
             {
-                if($associazione['carrello'] === $idCarrello);
-                {
-                    foreach($dati['libri'] as $libro)
-                    {
-                        if($libro['id'] === $associazione['libro'])
-                            array_push($tit, array('titolo'=>$libro['titolo'], 'nCopie' => $associazione['nCopie']));
-                    }
+                
+				foreach($dati['libri'] as $libro)
+				{
+					if(($libro['id'] == $associazione['libro'])&&($associazione['carrello'] == $idCarrello))
+						array_push($tit, array('titolo'=>$libro['titolo'], 'nCopie' => $associazione['nCopie']));
+				}
 
-                    $nCopie = $associazione['nCopie'];
-                }
+				$nCopie = $associazione['nCopie'];
+                
             }
 
             
@@ -169,9 +168,9 @@
             deliver_response(200,"carrello", $arr);
 
 		break;
-		default:
+		/*default:
 			deliver_response(400,"Invalid request", NULL);
-		break;
+		break;*/
 
         
 	}
