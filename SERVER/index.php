@@ -23,6 +23,7 @@
 			//Conversioni file JSON in array associativi
 			$dati = datiConversione('libri.json');
 			$reparti = datiConversione('reparti.json');
+			$ass = datiConversione('libriCategoria.json');
 
 			//inizializzazione variabili
 			$arr = array();
@@ -41,10 +42,15 @@
 		
 			foreach($dati['libri'] as $libro)
 			{
-				if($libro['reparto'] == $idFumetti && strtoupper($libro['categoria']) == strtoupper('I più venduti'))
+				if($libro['reparto'] == $idFumetti )
 				{
-					$arr[$i] = $libro['titolo'];
-					$i = $i + 1;
+
+					foreach($ass['libriCategoria'] as $associazione)
+					{
+						if(strtoupper($associazione['categoria']) == strtoupper('I più venduti')){
+							$arr[$i] = $libro['titolo'];
+							$i = $i + 1;}
+					}
 				}
 			}
 		
